@@ -2,6 +2,7 @@
 import React, { useState} from 'react';
 import {  ShoppingCart, Menu, X } from 'lucide-react';
 import { Card, CardContent } from '@/components/ui/card';
+import Image from 'next/image';
 
 const LandingPage = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -19,7 +20,7 @@ const LandingPage = () => {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center h-16">
             <div className="flex items-center">
-              <img src="/favicon.ico" alt="Aloha Pencil Company" className="h-8 w-auto" />
+              <Image src="/favicon.ico" alt="Aloha Pencil Company" width={32} height={32} className="h-8 w-auto" />
             </div>
             
             <div className="hidden md:flex items-center space-x-8">
@@ -72,9 +73,11 @@ const LandingPage = () => {
                 className="hover:shadow-lg transition-shadow"
               >
                 <CardContent className="p-6">
-                  <img 
-                    src={`/api/placeholder/300/200`}
+                  <Image
+                    src={`/favicon.ico`}
                     alt={product.name}
+                    width={300}
+                    height={200}
                     className="w-full h-48 object-cover rounded-lg mb-4"
                   />
                   <h3 className="text-xl font-bold text-green-800 mb-2">
