@@ -1,12 +1,10 @@
 "use client";
-import React, { useState, useEffect } from 'react';
-import { motion } from 'framer-motion';
-import { ChevronRight, ShoppingCart, Menu, X } from 'lucide-react';
+import React, { useState} from 'react';
+import {  ShoppingCart, Menu, X } from 'lucide-react';
 import { Card, CardContent } from '@/components/ui/card';
 
 const LandingPage = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const [activeProduct, setActiveProduct] = useState(0);
 
   const products = [
     { name: 'Koa Wood Pencil', description: 'Handcrafted from sustainable Hawaiian Koa', price: '$45' },
@@ -47,11 +45,7 @@ const LandingPage = () => {
       {/* Hero Section */}
       <section className="pt-24 pb-12 px-4 sm:px-6 lg:px-8">
         <div className="max-w-7xl mx-auto">
-          <motion.div 
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            className="text-center"
-          >
+        <div className="text-center">
             <h1 className="text-4xl md:text-6xl font-bold text-green-800 mb-6">
               Luxury writing instruments crafted from native Hawaiian woods
             </h1>
@@ -61,7 +55,7 @@ const LandingPage = () => {
             <button className="bg-green-600 text-white px-8 py-4 rounded-lg text-lg hover:bg-green-500 transition-colors">
               Explore Collection
             </button>
-          </motion.div>
+          </div>
         </div>
       </section>
 
