@@ -14,13 +14,14 @@ const LandingPage = () => {
   ];
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-white to-green-50">
+    <div className="min-h-screen flex flex-col bg-gradient-to-b from-white to-green-50">
       {/* Navigation */}
       <nav className="fixed w-full bg-white/90 backdrop-blur-sm shadow-sm z-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center h-16">
             <div className="flex items-center">
-              <Image src="/favicon.ico" alt="Aloha Pencil Company" width={32} height={32} className="h-8 w-auto" />
+              <Image src="/aloha-pencil-logo.png" alt="Aloha Pencil Company" width={32} height={32} className="h-8 w-auto" /> 
+              <span className="ml-2 text-green-800 font-bold">Aloha Pencil Company</span>
             </div>
             
             <div className="hidden md:flex items-center space-x-8">
@@ -44,7 +45,7 @@ const LandingPage = () => {
       </nav>
 
       {/* Hero Section */}
-      <section className="pt-24 pb-12 px-4 sm:px-6 lg:px-8">
+      <section className="flex-grow pt-24 pb-12 px-4 sm:px-6 lg:px-8">
         <div className="max-w-7xl mx-auto">
         <div className="text-center">
             <h1 className="text-4xl md:text-6xl font-bold text-green-800 mb-6">
@@ -53,9 +54,7 @@ const LandingPage = () => {
             <p className="text-xl text-green-600 mb-8">
               Experience the beauty of Hawaii in every stroke
             </p>
-            <button className="bg-green-600 text-white px-8 py-4 rounded-lg text-lg hover:bg-green-500 transition-colors">
-              Explore Collection
-            </button>
+            <Image src="/aloha-pencil-logo.png" alt="Aloha Pencil Company" width={400} height={400} className="mx-auto mb-8 shadow-xl" />
           </div>
         </div>
       </section>
@@ -98,6 +97,11 @@ const LandingPage = () => {
                 </CardContent>
               </Card>
             ))}
+          </div>
+          <div className="text-center mt-12">
+          <button className="bg-green-600 text-white px-8 py-4 rounded-lg text-lg hover:bg-green-500 transition-colors">
+              Explore Collection
+            </button>
           </div>
         </div>
       </section>
