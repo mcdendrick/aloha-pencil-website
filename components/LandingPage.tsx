@@ -8,9 +8,9 @@ const LandingPage = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   const products = [
-    { name: 'Koa Wood Pencil', description: 'Handcrafted from sustainable Hawaiian Koa', price: '$45' },
-    { name: 'Mango Wood Pen', description: 'Elegant writing instrument from Mango wood', price: '$65' },
-    { name: 'Limited Edition Set', description: 'Collection of native wood instruments', price: '$120' }
+    { name: 'Koa Wood', description: 'Handcrafted from sustainable Hawaiian Koa', price: '$45', image: '/koa-wood-2.png' },
+    { name: 'Mango Wood', description: 'Elegant writing from Mango wood', price: '$65', image: '/mango-wood-website.png' },
+    { name: 'Monkeypod', description: 'Smooth and silky Monkeypod', price: '$75', image: '/monkeypod-hawaiian-wood.png' },
   ];
 
   return (
@@ -45,26 +45,31 @@ const LandingPage = () => {
       </nav>
 
       {/* Hero Section */}
-      <section className="flex-grow pt-24 pb-12 px-4 sm:px-6 lg:px-8">
+      <section className="flex-grow pt-24 pb-4 px-4 sm:px-6 lg:px-8">
         <div className="max-w-7xl mx-auto">
         <div className="text-center">
-            <h1 className="text-4xl md:text-6xl font-bold text-green-800 mb-6">
+            <h1 className="text-4xl md:text-6xl font-bold text-green-800 mb-4">
               Luxury writing instruments crafted from native Hawaiian woods
             </h1>
-            <p className="text-xl text-green-600 mb-8">
+            <p className="text-xl text-green-600 mb-4">
               Experience the beauty of Hawaii in every stroke
             </p>
-            <Image src="/aloha-pencil-logo.png" alt="Aloha Pencil Company" width={400} height={400} className="mx-auto mb-8 shadow-xl" />
+            <Image src="/aloha-pencil-logo.png" alt="Aloha Pencil Company" width={400} height={400} className="mx-auto mb-4 shadow-xl" />
           </div>
         </div>
       </section>
 
       {/* Featured Products */}
-      <section className="py-16 bg-white">
+      <section className="py-4 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="text-3xl font-bold text-green-800 mb-12 text-center">
-            Our Collection
+          <div className="flex justify-between items-center mb-8">
+          <h2 className="text-3xl font-bold text-green-800">
+            Our Best Sellers
           </h2>
+          <button className="bg-green-600 text-white px-8 py-2 rounded-lg text-lg hover:bg-green-500 transition-colors">
+              Explore Full Collection
+            </button>
+          </div>
           <div className="grid md:grid-cols-3 gap-8">
             {products.map((product, index) => (
               <Card 
@@ -73,7 +78,7 @@ const LandingPage = () => {
               >
                 <CardContent className="p-6">
                   <Image
-                    src={`/favicon.ico`}
+                    src={product.image}
                     alt={product.name}
                     width={300}
                     height={200}
@@ -97,11 +102,6 @@ const LandingPage = () => {
                 </CardContent>
               </Card>
             ))}
-          </div>
-          <div className="text-center mt-12">
-          <button className="bg-green-600 text-white px-8 py-4 rounded-lg text-lg hover:bg-green-500 transition-colors">
-              Explore Collection
-            </button>
           </div>
         </div>
       </section>
