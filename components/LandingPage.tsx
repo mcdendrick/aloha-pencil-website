@@ -3,7 +3,7 @@ import React, { useState} from 'react';
 import {  ShoppingCart, Menu, X } from 'lucide-react';
 import { Card, CardContent } from '@/components/ui/card';
 import Image from 'next/image';
-
+import Link from 'next/link';
 const LandingPage = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
@@ -25,10 +25,10 @@ const LandingPage = () => {
             </div>
             
             <div className="hidden md:flex items-center space-x-8">
-              <a href="#" className="text-green-700 hover:text-green-500">Home</a>
-              <a href="#" className="text-green-700 hover:text-green-500">Products</a>
-              <a href="#" className="text-green-700 hover:text-green-500">About</a>
-              <a href="#" className="text-green-700 hover:text-green-500">Contact</a>
+              <Link href="/" className="text-green-700 hover:text-green-500">Home</Link>
+              <Link href="/products" className="text-green-700 hover:text-green-500">Products</Link>
+              <Link href="/about" className="text-green-700 hover:text-green-500">About</Link>
+              <a href="/contact" className="text-green-700 hover:text-green-500">Contact</a>
               <button className="bg-green-600 text-white px-4 py-2 rounded-lg hover:bg-green-500 transition-colors">
                 Shop Now
               </button>
