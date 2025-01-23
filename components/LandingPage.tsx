@@ -39,17 +39,24 @@ const LandingPage = () => {
       {/* Featured Products */}
       <section className="py-4 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex justify-between items-center mb-8">
+          {/* Desktop "View All" button */}
+          <div className="hidden sm:flex justify-between items-center mb-8">
             <h2 className="text-3xl font-bold text-green-800">
               Our Best Sellers
             </h2>
             <Link 
               href="/products" 
-              className="bg-green-600 text-white px-8 py-2 rounded-lg text-lg hover:bg-green-500 transition-colors"
+              className="bg-green-600 text-white px-8 py-2 rounded-lg hover:bg-green-500 transition-colors"
             >
-              Explore Full Collection
+              View All Products
             </Link>
           </div>
+          
+          {/* Mobile heading */}
+          <h2 className="sm:hidden text-3xl font-bold text-green-800 text-center mb-8">
+            Our Best Sellers
+          </h2>
+
           <div className="grid md:grid-cols-3 gap-8">
             {products.map((product, index) => (
               <Card 
@@ -89,6 +96,16 @@ const LandingPage = () => {
                 </CardContent>
               </Card>
             ))}
+          </div>
+
+          {/* Mobile "View All" button */}
+          <div className="sm:hidden mt-8 text-center">
+            <Link 
+              href="/products" 
+              className="inline-block bg-green-600 text-white px-8 py-3 rounded-lg hover:bg-green-500 transition-colors w-full"
+            >
+              View All Products
+            </Link>
           </div>
         </div>
       </section>
