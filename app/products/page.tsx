@@ -1,13 +1,16 @@
 "use client";
-import React from 'react';
+import React, { useState } from 'react';
 import Layout from '@/components/Layout';
 import { Card, CardContent } from '@/components/ui/card';
 import Image from 'next/image';
 import { ShoppingCart } from 'lucide-react';
 import { useCart } from '@/contexts/CartContext';
+import { AddToCartToast } from '@/components/AddToCartToast';
 
 export default function ProductsPage() {
   const { addToCart } = useCart();
+  const [toastVisible, setToastVisible] = useState(false);
+  const [addedProduct, setAddedProduct] = useState('');
   
   const products = [
     { name: 'Koa Wood', description: 'Handcrafted from sustainable Hawaiian Koa', price: '$45', image: '/koa-wood-2.png' },
@@ -46,7 +49,11 @@ export default function ProductsPage() {
                       {product.price}
                     </span>
                     <button 
-                      onClick={() => addToCart(product)}
+                      onClick={() => {
+                        addToCart(product);
+                        setAddedProduct(product.name);
+                        setToastVisible(true);
+                      }}
                       className="flex items-center gap-2 bg-green-600 text-white px-4 py-2 rounded-lg hover:bg-green-500 transition-colors"
                     >
                       <ShoppingCart size={20} />
@@ -59,6 +66,11 @@ export default function ProductsPage() {
           </div>
         </div>
       </div>
+      <AddToCartToast 
+        isVisible={toastVisible} 
+        onClose={() => setToastVisible(false)} 
+        productName={addedProduct}
+      />
     </Layout>
   );
 }

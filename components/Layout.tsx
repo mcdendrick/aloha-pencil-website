@@ -3,9 +3,12 @@ import React, { useState } from 'react';
 import { Menu, X } from 'lucide-react';
 import Image from 'next/image';
 import Link from 'next/link';
+import { CartIcon } from '@/components/CartIcon';
+import { CartPreview } from '@/components/CartPreview';
 
 const Layout = ({ children }: { children: React.ReactNode }) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isCartOpen, setIsCartOpen] = useState(false);
 
   return (
     <div className="min-h-screen flex flex-col bg-gradient-to-b from-white to-green-50">
@@ -26,6 +29,15 @@ const Layout = ({ children }: { children: React.ReactNode }) => {
               <button className="bg-green-600 text-white px-4 py-2 rounded-lg hover:bg-green-500 transition-colors">
                 Shop Now
               </button>
+              <div className="relative">
+                <button 
+                  onClick={() => setIsCartOpen(!isCartOpen)} 
+                  className="ml-4"
+                >
+                  <CartIcon />
+                </button>
+                <CartPreview isOpen={isCartOpen} onClose={() => setIsCartOpen(false)} />
+              </div>
             </div>
 
             <button 
