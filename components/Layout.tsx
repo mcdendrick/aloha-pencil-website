@@ -3,8 +3,8 @@ import React, { useState } from 'react';
 import { Menu, X } from 'lucide-react';
 import Image from 'next/image';
 import Link from 'next/link';
-import { CartIcon } from '@/components/CartIcon';
-import { CartPreview } from '@/components/CartPreview';
+import { CartIcon } from './CartIcon';
+import { CartPreview } from './CartPreview';
 
 const Layout = ({ children }: { children: React.ReactNode }) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -21,18 +21,18 @@ const Layout = ({ children }: { children: React.ReactNode }) => {
               <span className="ml-2 text-green-800 font-bold">Aloha Pencil Company</span>
             </div>
             
-            <div className="hidden md:flex items-center space-x-8">
-              <Link href="/" className="text-green-700 hover:text-green-500">Home</Link>
-              <Link href="/products" className="text-green-700 hover:text-green-500">Products</Link>
-              <Link href="/about" className="text-green-700 hover:text-green-500">About</Link>
-              <Link href="/contact" className="text-green-700 hover:text-green-500">Contact</Link>
-              <button className="bg-green-600 text-white px-4 py-2 rounded-lg hover:bg-green-500 transition-colors">
-                Shop Now
-              </button>
-              <div className="relative">
+            <div className="hidden md:flex items-center">
+              <div className="flex items-center space-x-8">
+                <Link href="/" className="text-green-700 hover:text-green-500">Home</Link>
+                <Link href="/products" className="text-green-700 hover:text-green-500">Products</Link>
+                <Link href="/about" className="text-green-700 hover:text-green-500">About</Link>
+                <Link href="/contact" className="text-green-700 hover:text-green-500">Contact</Link>
+              </div>
+              
+              <div className="relative ml-8">
                 <button 
                   onClick={() => setIsCartOpen(!isCartOpen)} 
-                  className="ml-4"
+                  className="p-2 hover:bg-green-50 rounded-full transition-colors"
                 >
                   <CartIcon />
                 </button>
