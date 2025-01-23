@@ -10,6 +10,12 @@ const Layout = ({ children }: { children: React.ReactNode }) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isCartOpen, setIsCartOpen] = useState(false);
 
+  // Close menu when cart is opened on mobile
+  const handleCartOpen = () => {
+    setIsCartOpen(true);
+    setIsMenuOpen(false);
+  };
+
   return (
     <div className="min-h-screen flex flex-col bg-gradient-to-b from-white to-green-50">
       {/* Navigation */}
@@ -83,10 +89,7 @@ const Layout = ({ children }: { children: React.ReactNode }) => {
                   Contact
                 </Link>
                 <button 
-                  onClick={() => {
-                    setIsCartOpen(!isCartOpen);
-                    setIsMenuOpen(false);
-                  }}
+                  onClick={handleCartOpen}
                   className="w-full flex items-center px-3 py-2 text-green-700 hover:text-green-500 hover:bg-green-50 rounded-md"
                 >
                   <CartIcon />
@@ -97,6 +100,13 @@ const Layout = ({ children }: { children: React.ReactNode }) => {
           )}
         </div>
       </nav>
+
+      {/* Mobile Cart Preview */}
+      {isCartOpen && (
+        <div className="md:hidden fixed inset-0 bg-black bg-opacity-50 z-50">
+          <CartPreview isOpen={isCartOpen} onClose={() => setIsCartOpen(false)} />
+        </div>
+      )}
 
       {/* Main Content */}
       <main className="flex-grow">

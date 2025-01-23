@@ -10,21 +10,26 @@ export const CartPreview = ({ isOpen, onClose }: { isOpen: boolean; onClose: () 
   if (!isOpen) return null;
 
   return (
-    <div className="absolute top-16 right-0 w-96 bg-white rounded-lg shadow-lg z-50 p-4">
-      <div className="flex justify-between items-center mb-4">
+    <div className="fixed md:absolute top-16 right-0 w-full md:w-96 bg-white h-[calc(100vh-4rem)] md:h-auto md:max-h-[32rem] overflow-auto rounded-t-lg md:rounded-lg shadow-xl">
+      <div className="sticky top-0 bg-white border-b px-4 py-3 flex justify-between items-center">
         <h3 className="text-lg font-bold text-green-800">Shopping Cart</h3>
-        <button onClick={onClose} className="text-gray-500 hover:text-gray-700">
-          <X size={20} />
+        <button 
+          onClick={onClose}
+          className="p-2 hover:bg-green-50 rounded-full transition-colors"
+        >
+          <X size={20} className="text-gray-500" />
         </button>
       </div>
       
       {items.length === 0 ? (
-        <p className="text-gray-500 text-center py-4">Your cart is empty</p>
+        <div className="p-4">
+          <p className="text-gray-500 text-center py-4">Your cart is empty</p>
+        </div>
       ) : (
         <>
-          <div className="max-h-96 overflow-auto">
+          <div className="px-4 py-2">
             {items.map((item, index) => (
-              <div key={index} className="flex items-center gap-4 py-2 border-b">
+              <div key={index} className="flex items-center gap-4 py-3 border-b last:border-b-0">
                 <Image
                   src={item.image}
                   alt={item.name}
@@ -40,7 +45,7 @@ export const CartPreview = ({ isOpen, onClose }: { isOpen: boolean; onClose: () 
                   <select
                     value={item.quantity}
                     onChange={(e) => updateQuantity(item.name, Number(e.target.value))}
-                    className="border rounded p-1"
+                    className="border rounded p-1 text-sm"
                   >
                     {[1, 2, 3, 4, 5].map((num) => (
                       <option key={num} value={num}>
@@ -50,7 +55,7 @@ export const CartPreview = ({ isOpen, onClose }: { isOpen: boolean; onClose: () 
                   </select>
                   <button
                     onClick={() => removeFromCart(item.name)}
-                    className="text-red-500 hover:text-red-700"
+                    className="p-1 hover:bg-red-50 rounded-full transition-colors text-red-500"
                   >
                     <X size={16} />
                   </button>
@@ -58,12 +63,12 @@ export const CartPreview = ({ isOpen, onClose }: { isOpen: boolean; onClose: () 
               </div>
             ))}
           </div>
-          <div className="mt-4 pt-4 border-t">
+          <div className="sticky bottom-0 bg-white border-t p-4">
             <div className="flex justify-between items-center mb-4">
               <span className="font-bold text-green-800">Total:</span>
               <span className="font-bold text-green-800">${total.toFixed(2)}</span>
             </div>
-            <button className="w-full bg-green-600 text-white py-2 rounded-lg hover:bg-green-500 transition-colors">
+            <button className="w-full bg-green-600 text-white py-3 rounded-lg hover:bg-green-500 transition-colors">
               Checkout
             </button>
           </div>
