@@ -2,8 +2,13 @@
 import React from 'react';
 import Layout from '@/components/Layout';
 import Image from 'next/image';
+import { useLanguage } from '@/contexts/LanguageContext';
+import { translations } from '@/locales/translations';
 
 export default function AboutPage() {
+  const { language } = useLanguage();
+  const t = translations[language];
+
   return (
     <Layout>
       <div className="pt-20 pb-12 px-4">
@@ -19,9 +24,9 @@ export default function AboutPage() {
           </div>
 
           <div className="mb-16">
-            <h2 className="text-3xl font-bold text-green-800 mb-8">Our Craftsmen</h2>
+            <h2 className="text-3xl font-bold text-green-800 mb-8">{t.about.craftsmen}</h2>
             <p className="text-green-700 mb-12">
-              Our team consists of skilled artisans who carefully select and craft Hawaiian woods into fine writing instruments.
+              {t.about.teamDescription}
             </p>
 
             <div className="grid md:grid-cols-2 gap-8 items-center">
@@ -33,11 +38,9 @@ export default function AboutPage() {
                 className="rounded-lg shadow-xl w-full"
               />
               <div>
-                <h3 className="text-2xl font-bold text-green-800 mb-4">Zac Moffat</h3>
+                <h3 className="text-2xl font-bold text-green-800 mb-4">{t.about.masterCraftsman}</h3>
                 <p className="text-green-700">
-                  Owner and craftsman Zach grew up in Laie, Hawaii and lives on the island of Oahu, 
-                  and has decades of experience working with native Hawaiian woods such as 
-                  Koa, Mango and Kamani.
+                  {t.about.craftsmanDescription}
                 </p>
               </div>
             </div>

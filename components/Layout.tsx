@@ -5,6 +5,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { CartIcon } from './CartIcon';
 import { CartPreview } from './CartPreview';
+import { LanguageSwitcher } from './LanguageSwitcher';
 
 const Layout = ({ children }: { children: React.ReactNode }) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -36,6 +37,7 @@ const Layout = ({ children }: { children: React.ReactNode }) => {
                 <Link href="/products" className="text-green-700 hover:text-green-500">Products</Link>
                 <Link href="/about" className="text-green-700 hover:text-green-500">About</Link>
                 <Link href="/contact" className="text-green-700 hover:text-green-500">Contact</Link>
+                <LanguageSwitcher />
               </div>
               
               <div className="relative ml-8">

@@ -2,8 +2,12 @@
 import React, { useState } from 'react';
 import Layout from '@/components/Layout';
 import Image from 'next/image';
+import { useLanguage } from '@/contexts/LanguageContext';
+import { translations } from '@/locales/translations';
 
 export default function ContactPage() {
+  const { language } = useLanguage();
+  const t = translations[language];
   const [formData, setFormData] = useState({
     firstName: '',
     lastName: '',
@@ -31,21 +35,20 @@ export default function ContactPage() {
     <Layout>
       <div className="pt-20 px-4">
         <div className="max-w-7xl mx-auto">
-          <h1 className="text-4xl font-bold text-green-800 mb-8">Contact Us</h1>
+          <h1 className="text-4xl font-bold text-green-800 mb-8">{t.contact.title}</h1>
           
           <div className="grid md:grid-cols-2 gap-12 items-start">
             {/* Contact Form */}
             <div>
               <p className="text-lg text-green-700 mb-8">
-                We&apos;d love to hear from you. Get in touch with us for any questions 
-                about our products or services.
+                {t.contact.subtitle}
               </p>
               
               <form onSubmit={handleSubmit} className="space-y-6">
                 <div className="grid grid-cols-1 gap-6 sm:grid-cols-2">
                   <div>
                     <label htmlFor="firstName" className="block text-sm font-medium text-green-700">
-                      First name
+                      {t.contact.form.firstName}
                     </label>
                     <input
                       type="text"
@@ -60,7 +63,7 @@ export default function ContactPage() {
 
                   <div>
                     <label htmlFor="lastName" className="block text-sm font-medium text-green-700">
-                      Last name
+                      {t.contact.form.lastName}
                     </label>
                     <input
                       type="text"
@@ -76,7 +79,7 @@ export default function ContactPage() {
 
                 <div>
                   <label htmlFor="email" className="block text-sm font-medium text-green-700">
-                    Your email
+                    {t.contact.form.email}
                   </label>
                   <input
                     type="email"
@@ -91,7 +94,7 @@ export default function ContactPage() {
 
                 <div>
                   <label htmlFor="subject" className="block text-sm font-medium text-green-700">
-                    Email subject
+                    {t.contact.form.subject}
                   </label>
                   <input
                     type="text"
@@ -106,7 +109,7 @@ export default function ContactPage() {
 
                 <div>
                   <label htmlFor="message" className="block text-sm font-medium text-green-700">
-                    Your message
+                    {t.contact.form.message}
                   </label>
                   <textarea
                     name="message"
@@ -130,7 +133,7 @@ export default function ContactPage() {
                     required
                   />
                   <label htmlFor="consent" className="ml-2 text-sm text-gray-600">
-                    By checking this box and submitting your information, you are granting us permission to email you. You may unsubscribe at any time.
+                    {t.contact.form.consent}
                   </label>
                 </div>
 
@@ -138,7 +141,7 @@ export default function ContactPage() {
                   type="submit"
                   className="bg-green-600 text-white px-6 py-2 rounded-md hover:bg-green-500 transition-colors"
                 >
-                  Send Message
+                  {t.contact.form.submit}
                 </button>
               </form>
             </div>

@@ -2,6 +2,8 @@
 import React, { useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { CheckCircle } from 'lucide-react';
+import { useLanguage } from '@/contexts/LanguageContext';
+import { translations } from '@/locales/translations';
 
 export const AddToCartToast = ({ 
   isVisible, 
@@ -12,6 +14,9 @@ export const AddToCartToast = ({
   onClose: () => void; 
   productName: string;
 }) => {
+  const { language } = useLanguage();
+  const t = translations[language];
+
   useEffect(() => {
     if (isVisible) {
       const timer = setTimeout(onClose, 3000);
@@ -29,7 +34,7 @@ export const AddToCartToast = ({
           className="fixed bottom-4 right-4 bg-green-600 text-white px-4 py-2 rounded-lg shadow-lg flex items-center gap-2"
         >
           <CheckCircle size={20} />
-          <span>{productName} added to cart!</span>
+          <span>{t.toast.addedToCart.replace('{productName}', productName)}</span>
         </motion.div>
       )}
     </AnimatePresence>

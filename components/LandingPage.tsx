@@ -7,16 +7,32 @@ import Layout from '@/components/Layout';
 import { useCart } from '@/contexts/CartContext';
 import { AddToCartToast } from './AddToCartToast';
 import Link from 'next/link';
+import { useLanguage } from '@/contexts/LanguageContext';
+import { translations } from '@/locales/translations';
 
 const LandingPage = () => {
   const { addToCart } = useCart();
   const [toastVisible, setToastVisible] = useState(false);
   const [addedProduct, setAddedProduct] = useState('');
+  const { language } = useLanguage();
+  const t = translations[language];
 
   const products = [
-    { name: 'Koa Wood', description: 'Handcrafted from sustainable Hawaiian Koa', price: '$45', image: '/koa-wood-2.png' },
-    { name: 'Mango Wood', description: 'Elegant writing from Mango wood', price: '$65', image: '/mango-wood-website.png' },
-    { name: 'Monkeypod', description: 'Smooth and silky Monkeypod', price: '$75', image: '/monkeypod-hawaiian-wood.png' },
+    { 
+      ...t.home.products.cards.koaWood,
+      price: '$45', 
+      image: '/koa-wood-2.png' 
+    },
+    { 
+      ...t.home.products.cards.mangoWood,
+      price: '$65', 
+      image: '/mango-wood-website.png' 
+    },
+    { 
+      ...t.home.products.cards.monkeypod,
+      price: '$75', 
+      image: '/monkeypod-hawaiian-wood.png' 
+    },
   ];
 
   return (
@@ -26,10 +42,10 @@ const LandingPage = () => {
         <div className="max-w-7xl mx-auto">
           <div className="text-center">
             <h1 className="text-4xl md:text-6xl font-bold text-green-800 mb-4">
-              Luxury writing instruments crafted from native Hawaiian woods
+              {t.home.hero.title}
             </h1>
             <p className="text-xl text-green-600 mb-4">
-              Experience the beauty of Hawaii in every stroke
+              {t.home.hero.subtitle}
             </p>
             <Image src="/aloha-pencil-logo.png" alt="Aloha Pencil Company" width={400} height={400} className="mx-auto mb-4 shadow-xl" />
           </div>
@@ -42,19 +58,19 @@ const LandingPage = () => {
           {/* Desktop "View All" button */}
           <div className="hidden sm:flex justify-between items-center mb-8">
             <h2 className="text-3xl font-bold text-green-800">
-              Our Best Sellers
+              {t.home.products.title}
             </h2>
             <Link 
               href="/products" 
               className="bg-green-600 text-white px-8 py-2 rounded-lg hover:bg-green-500 transition-colors"
             >
-              View All Products
+              {t.home.products.viewAll}
             </Link>
           </div>
           
           {/* Mobile heading */}
           <h2 className="sm:hidden text-3xl font-bold text-green-800 text-center mb-8">
-            Our Best Sellers
+            {t.home.products.title}
           </h2>
 
           <div className="grid md:grid-cols-3 gap-8">
@@ -90,7 +106,7 @@ const LandingPage = () => {
                       className="flex items-center gap-2 bg-green-600 text-white px-4 py-2 rounded-lg hover:bg-green-500 transition-colors"
                     >
                       <ShoppingCart size={20} />
-                      Add to Cart
+                      {t.home.products.addToCart}
                     </button>
                   </div>
                 </CardContent>
@@ -104,7 +120,7 @@ const LandingPage = () => {
               href="/products" 
               className="inline-block bg-green-600 text-white px-8 py-3 rounded-lg hover:bg-green-500 transition-colors w-full"
             >
-              View All Products
+              {t.home.products.viewAll}
             </Link>
           </div>
         </div>
