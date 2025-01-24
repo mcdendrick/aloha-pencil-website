@@ -1,15 +1,19 @@
 "use client";
 import React, { useState } from 'react';
-import { Menu, X } from 'lucide-react';
+import { Menu, X, Phone, Mail } from 'lucide-react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { CartIcon } from './CartIcon';
 import { CartPreview } from './CartPreview';
 import { LanguageSwitcher } from './LanguageSwitcher';
+import { useLanguage } from '@/contexts/LanguageContext';
+import { translations } from '@/locales/translations';
 
 const Layout = ({ children }: { children: React.ReactNode }) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isCartOpen, setIsCartOpen] = useState(false);
+  const { language } = useLanguage();
+  const t = translations[language];
 
   // Close menu when cart is opened on mobile
   const handleCartOpen = () => {
@@ -33,10 +37,10 @@ const Layout = ({ children }: { children: React.ReactNode }) => {
             {/* Desktop Menu */}
             <div className="hidden md:flex items-center">
               <div className="flex items-center space-x-8">
-                <Link href="/" className="text-green-700 hover:text-green-500">Home</Link>
-                <Link href="/products" className="text-green-700 hover:text-green-500">Products</Link>
-                <Link href="/about" className="text-green-700 hover:text-green-500">About</Link>
-                <Link href="/contact" className="text-green-700 hover:text-green-500">Contact</Link>
+                <Link href="/" className="text-green-700 hover:text-green-500">{t.nav.home}</Link>
+                <Link href="/products" className="text-green-700 hover:text-green-500">{t.nav.products}</Link>
+                <Link href="/about" className="text-green-700 hover:text-green-500">{t.nav.about}</Link>
+                <Link href="/contact" className="text-green-700 hover:text-green-500">{t.nav.contact}</Link>
                 <LanguageSwitcher />
               </div>
               
@@ -69,36 +73,39 @@ const Layout = ({ children }: { children: React.ReactNode }) => {
                   className="block px-3 py-2 text-green-700 hover:text-green-500 hover:bg-green-50 rounded-md"
                   onClick={() => setIsMenuOpen(false)}
                 >
-                  Home
+                  {t.nav.home}
                 </Link>
                 <Link 
                   href="/products" 
                   className="block px-3 py-2 text-green-700 hover:text-green-500 hover:bg-green-50 rounded-md"
                   onClick={() => setIsMenuOpen(false)}
                 >
-                  Products
+                  {t.nav.products}
                 </Link>
                 <Link 
                   href="/about" 
                   className="block px-3 py-2 text-green-700 hover:text-green-500 hover:bg-green-50 rounded-md"
                   onClick={() => setIsMenuOpen(false)}
                 >
-                  About
+                  {t.nav.about}
                 </Link>
                 <Link 
                   href="/contact" 
                   className="block px-3 py-2 text-green-700 hover:text-green-500 hover:bg-green-50 rounded-md"
                   onClick={() => setIsMenuOpen(false)}
                 >
-                  Contact
+                  {t.nav.contact}
                 </Link>
                 <button 
                   onClick={handleCartOpen}
                   className="w-full flex items-center px-3 py-2 text-green-700 hover:text-green-500 hover:bg-green-50 rounded-md"
                 >
                   <CartIcon />
-                  <span className="ml-2">Cart</span>
+                  <span className="ml-2">{t.cart.menutitle}</span>
                 </button>
+                <div className="px-3 py-2">
+                  <LanguageSwitcher />
+                </div>
               </div>
             </div>
           )}
@@ -122,34 +129,40 @@ const Layout = ({ children }: { children: React.ReactNode }) => {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid md:grid-cols-3 gap-8">
             <div>
-              <h3 className="text-xl font-bold mb-4">Contact Us</h3>
-              <p>1 (866) 365-1989</p>
-              <p>Info@AlohaPencil.com</p>
+              <h3 className="text-xl font-bold mb-4">{t.footer.contact}</h3>
+              <div className="flex items-center gap-2">
+                <Phone size={16} />
+                <p>1 (866) 365-1989</p>
+              </div>
+              <div className="flex items-center gap-2 mt-2">
+                <Mail size={16} />
+                <p>Info@AlohaPencil.com</p>
+              </div>
             </div>
             <div>
-              <h3 className="text-xl font-bold mb-4">Quick Links</h3>
+              <h3 className="text-xl font-bold mb-4">{t.nav.quickLinks}</h3>
               <ul className="space-y-2">
-                <li><Link href="/about" className="hover:text-green-300">About Us</Link></li>
-                <li><Link href="/products" className="hover:text-green-300">Products</Link></li>
-                <li><Link href="/contact" className="hover:text-green-300">Contact</Link></li>
+                <li><Link href="/about" className="hover:text-green-300">{t.nav.about}</Link></li>
+                <li><Link href="/products" className="hover:text-green-300">{t.nav.products}</Link></li>
+                <li><Link href="/contact" className="hover:text-green-300">{t.nav.contact}</Link></li>
               </ul>
             </div>
             <div>
-              <h3 className="text-xl font-bold mb-4">Newsletter</h3>
+              <h3 className="text-xl font-bold mb-4">{t.footer.newsletter}</h3>
               <div className="flex gap-2">
                 <input 
                   type="email" 
-                  placeholder="Enter your email"
+                  placeholder={t.footer.emailPlaceholder}
                   className="px-4 py-2 rounded-lg text-black flex-1"
                 />
                 <button className="bg-green-600 px-4 py-2 rounded-lg hover:bg-green-500">
-                  Subscribe
+                  {t.footer.subscribe}
                 </button>
               </div>
             </div>
           </div>
           <div className="mt-8 pt-8 border-t border-green-700 text-center">
-            <p>&copy; 2024 Aloha Pencil Company, LLC</p>
+            <p>{t.footer.copyright}</p>
           </div>
         </div>
       </footer>

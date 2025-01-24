@@ -5,6 +5,7 @@ export const translations = {
       products: 'Products',
       about: 'About',
       contact: 'Contact',
+      quickLinks: 'Quick Links'
     },
     about: {
       craftsmen: 'Our Craftsmen',
@@ -74,6 +75,7 @@ export const translations = {
     },
     cart: {
       title: 'Shopping Cart',
+      menutitle: 'Cart',
       empty: 'Your cart is empty',
       total: 'Total',
       checkout: 'Checkout',
@@ -83,6 +85,15 @@ export const translations = {
     toast: {
       addedToCart: '{productName} added to cart!'
     },
+    footer: {
+      copyright: '© 2024 Aloha Pencil Company. All rights reserved.',
+      contact: 'Contact Us',
+      newsletter: 'Newsletter',
+      subscribe: 'Subscribe',
+      emailPlaceholder: 'Enter your email',
+      phone: 'Phone',
+      email: 'Email'
+    },
     // Add more translations as needed
   },
   ja: {
@@ -91,6 +102,7 @@ export const translations = {
       products: '製品',
       about: '会社概要',
       contact: 'お問い合わせ',
+      quickLinks: 'クイックリンク'
     },
     about: {
       craftsmen: '私たちの職人',
@@ -160,6 +172,7 @@ export const translations = {
     },
     cart: {
       title: 'ショッピングカート',
+      menutitle: 'カート',
       empty: 'カートは空です',
       total: '合計',
       checkout: 'レジに進む',
@@ -168,6 +181,15 @@ export const translations = {
     },
     toast: {
       addedToCart: '{productName}をカートに追加しました！'
+    },
+    footer: {
+      copyright: '© 2024 アロハ・ペンシル・カンパニー. 無断複写・転載を禁じます。',
+      contact: 'お問い合わせ',
+      newsletter: 'ニュースレター',
+      subscribe: '登録',
+      emailPlaceholder: 'メールアドレスを入力',
+      phone: '電話',
+      email: 'メール'
     },
     // Add more translations as needed
   },
