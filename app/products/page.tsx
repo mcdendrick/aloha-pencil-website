@@ -41,7 +41,7 @@ export default function ProductsPage() {
 
   return (
     <Layout>
-      <div className="pt-20 px-4">
+      <div className="pt-20 pb-12 px-4">
         <div className="max-w-7xl mx-auto">
           <h1 className="text-4xl font-bold text-green-800 mb-4">Native Hawaiian Woods</h1>
           <p className="text-lg text-green-700 mb-8">
