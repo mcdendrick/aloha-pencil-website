@@ -23,8 +23,10 @@ const Layout = ({ children }: { children: React.ReactNode }) => {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center h-16">
             <div className="flex items-center">
-              <Image src="/aloha-pencil-logo.png" alt="Aloha Pencil Company" width={32} height={32} className="h-8 w-auto" /> 
-              <span className="ml-2 text-green-800 font-bold">Aloha Pencil Company</span>
+              <Link href="/" className="flex items-center hover:opacity-80 transition-opacity">
+                <Image src="/aloha-pencil-logo.png" alt="Aloha Pencil Company" width={32} height={32} className="h-8 w-auto" /> 
+                <span className="ml-2 text-green-800 font-bold">Aloha Pencil Company</span>
+              </Link>
             </div>
             
             {/* Desktop Menu */}
