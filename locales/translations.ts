@@ -86,7 +86,7 @@ export const translations = {
       addedToCart: '{productName} added to cart!'
     },
     footer: {
-      copyright: '© 2024 Aloha Pencil Company. All rights reserved.',
+      copyright: '© 2025 Aloha Pencil Company. All rights reserved.',
       contact: 'Contact Us',
       newsletter: 'Newsletter',
       subscribe: 'Subscribe',
@@ -183,7 +183,7 @@ export const translations = {
       addedToCart: '{productName}をカートに追加しました！'
     },
     footer: {
-      copyright: '© 2024 アロハ・ペンシル・カンパニー. 無断複写・転載を禁じます。',
+      copyright: '© 2025 アロハ・ペンシル・カンパニー. 無断複写・転載を禁じます。',
       contact: 'お問い合わせ',
       newsletter: 'ニュースレター',
       subscribe: '登録',
